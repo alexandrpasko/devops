@@ -5,6 +5,7 @@ pipeline {
     BRANCH = 'main'
     WWWROOT = '/var/www/html'
     SSHUSER = 'jenkins'
+    WORKSPACE = '/home/alexandr/devops'
   }
   stages {
     stage('Audit Tools') {
@@ -45,12 +46,12 @@ pipeline {
         }
       }
     }
-    stage('Deploy app to WEB01') {
+    stage('Deploy app to WEB1') {
       steps {
-        sh "ssh web01 rm -rf /home/${SSHUSER}/conduit"
+        sh "ssh web1 rm -rf /home/${SSHUSER}/conduit"
         sh "scp -r ${WORKSPACE}/conduit-ui/dist web01:/home/${SSHUSER}/conduit"
-        sh "ssh web01 sudo rm -rf ${WWWROOT}/conduit"
-        sh "ssh web01 sudo cp -r /home/${SSHUSER}/conduit ${WWWROOT}/conduit"
+        sh "ssh web1 sudo rm -rf ${WWWROOT}/conduit"
+        sh "ssh web1 sudo cp -r /home/${SSHUSER}/conduit ${WWWROOT}/conduit"
       }
     }
   }

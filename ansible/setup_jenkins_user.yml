@@ -20,11 +20,11 @@
         dest: "/etc/sudoers.d/jenkins"
         content: "jenkins ALL=(ALL) NOPASSWD:ALL"
 
-    - name: Set jenkins user password to blank
-      command: sudo passwd -d jenkins
+    # - name: Set jenkins user password to blank
+    #   command: sudo passwd -d jenkins
 
-    - name: Expire jenkins user password
-      command: sudo chage -d 0 jenkins
+    # - name: Expire jenkins user password
+    #   command: sudo chage -d 0 jenkins
 
     # - name: Set authorized key taken for ansible user
     #   authorized_key:
