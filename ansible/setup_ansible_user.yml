@@ -1,15 +1,15 @@
 ---
-- hosts: all
+- hosts: web
   become: yes
 
   tasks:
-    - name: Add the ansible user 
+    - name: Add the ansible user
       user:
-        name: ansible 
+        name: ansible
         shell: /bin/bash
         update_password: always
         # password: Ansible01!
-        password: "{{ newpassword|password_hash('sha512') }}"
+        password: "{{ newpassword|password_hash('Wedv1-1983') }}"
         groups: adm,sudo,dip,plugdev,lxd
         append: yes
         state: present
@@ -23,4 +23,4 @@
       authorized_key:
         user: ansible
         state: present
-        key: "{{ lookup('file', '/home/cosoria/ansible/ansible_key.pub') }}"
+        key: "{{ lookup('file', '/home/alexandr/devops/ansible/ansible_key.pub') }}"
