@@ -1,23 +1,23 @@
---- 
-- hosts: all
+---
+- hosts: web
 
   tasks:
-    - name: Update apt cache 
+    - name: Update apt cache
       apt:
         update_cache: yes
         cache_valid_time: 3600
 
-    - name: Install Prerequisites 
+    - name: Install Prerequisites
       apt:
-        name: 
-          - gcc 
+        name:
+          - gcc
           - build-essential
           - g++
-          - perl 
-          - dkms 
+          - perl
+          - dkms
         state: present
 
-    - name: Download and install the node feed 
+    - name: Download and install the node feed
       shell:
         cmd: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash
 
@@ -26,7 +26,7 @@
         name: nodejs
         state: present
 
-    - name: Install Python3 
+    - name: Install Python3
       apt:
         name: python3
         state: present
@@ -41,9 +41,9 @@
         name: gunicorn
         state: present
 
-    - name: Ensure servirces are running 
+    - name: Ensure servirces are running
       service:
-        name: nginx 
+        name: nginx
         state: started
 
     - name: "create conduit www directory"
@@ -54,7 +54,7 @@
         # owner: "jenkins"
         # group: "jenkins"
 
-    - name: Create the application directory 
+    - name: Create the application directory
       copy:
         dest: "/var/www/conduit/index.html"
         content: "<!DOCTYPE html><html><body>Conduit App</body></html>"
@@ -71,7 +71,7 @@
         dest: /etc/nginx/sites-enabled/conduit
         owner: root
         group: root
-        mode: '0644'
+        mode: "0644"
       notify: restart nginx
 
   handlers:
@@ -79,8 +79,3 @@
       service:
         name: nginx
         state: restarted
-
-   
-    
-
-    
