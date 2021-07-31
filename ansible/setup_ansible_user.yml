@@ -8,8 +8,8 @@
         name: ansible
         shell: /bin/bash
         update_password: always
-        # password: Ansible01!
-        password: "{{ newpassword|password_hash('sha512') }}"
+        password: $2y$10$4DdqQTudi9kvY.NRVKVIP.XDwpwcp7njISHYQAcBH9ERcI2vYGaiC
+        # password: "{{ newpassword|password_hash('sha512') }}"
         groups: adm,sudo,dip,plugdev,lxd
         append: yes
         state: present
