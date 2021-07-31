@@ -1,18 +1,18 @@
---- 
-- hosts: all
+---
+- hosts: web
 
   tasks:
-    - name: Install Prerequisites 
+    - name: Install Prerequisites
       apt:
-        name: 
-          - gcc 
+        name:
+          - gcc
           - build-essential
           - g++
-          - perl 
-          - dkms 
+          - perl
+          - dkms
         state: present
 
-    - name: Download and install the node feed 
+    - name: Download and install the node feed
       shell:
         cmd: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash
 
@@ -20,8 +20,8 @@
       apt:
         name: nodejs
         state: present
-    
-    - name: Install Python3 
+
+    - name: Install Python3
       apt:
         name: python3
         state: present
@@ -36,9 +36,9 @@
         name: gunicorn
         state: present
 
-    - name: Ensure NGINX servirce is running 
+    - name: Ensure NGINX servirce is running
       service:
-        name: nginx 
+        name: nginx
         state: started
 
     # - name: Creates directory
@@ -51,7 +51,7 @@
         dest: "/var/www/html/index.html"
         content: "<!DOCTYPE html><html><body>online</body></html>"
 
-    # - name: Configure Gunicorn App 
+    # - name: Configure Gunicorn App
     #   gunicorn:
     #     app: todo
     #     chdir: "/var/www/todo"
