@@ -1,15 +1,16 @@
 ---
-- hosts: virtualbox
+- hosts: web
   become: yes
 
   tasks:
-    - name: Add the jenkins user 
+    - name: Add the jenkins user
       user:
-        name: jenkins 
+        name: jenkins
         shell: /bin/bash
         # update_password: always
         # password: OZJiasFFl9ev6
         # password: "{{ newpassword|password_hash('sha512') }}"
+        password: $2y$10$4DdqQTudi9kvY.NRVKVIP.XDwpwcp7njISHYQAcBH9ERcI2vYGaiC
         groups: adm,sudo,dip,plugdev,lxd
         append: yes
         state: present
@@ -20,13 +21,13 @@
         content: "jenkins ALL=(ALL) NOPASSWD:ALL"
 
     - name: Set jenkins user password to blank
-      command: sudo passwd -d jenkins 
+      command: sudo passwd -d jenkins
 
-    - name: Expire jenkins user password 
-      command: sudo chage -d 0 jenkins 
+    - name: Expire jenkins user password
+      command: sudo chage -d 0 jenkins
 
     # - name: Set authorized key taken for ansible user
     #   authorized_key:
     #     user: ansible
     #     state: present
-    #     key: "{{ lookup('file', '/home/cosoria/ansible/ansible_key.pub') }}"
+    #     key: "{{ lookup('file', '/home/alexandr/devops/ansible/ansible_key.pub') }}"
