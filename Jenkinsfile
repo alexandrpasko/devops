@@ -4,7 +4,7 @@ pipeline {
     COURSE = 'Calgary DevOps'
     BRANCH = 'main'
     WWWROOT = '/var/www/html'
-    SSHUSER = 'jenkins'
+    SSHUSER = 'alexandr'
     WORKSPACE = '/home/alexandr/devops'
   }
   stages {
