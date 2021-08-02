@@ -4,7 +4,7 @@ pipeline {
     COURSE = 'Calgary DevOps'
     BRANCH = 'main'
     WWWROOT = '/var/www/html'
-    SSHUSER = 'alexandr'
+    SSHUSER = 'jenkins'
     WORKSPACE = '/home/alexandr/devops'
   }
   stages {
@@ -13,8 +13,8 @@ pipeline {
         echo "Audit all tools to be use on this pipeline ${BRANCH}"
         sh "git --version"
         sh "node --version"
-        //sh "npm --version"
-        //sh "ng --version"
+        sh "npm --version"
+        sh "ng --version"
         sh "ansible --version"
         echo "Workspace Folder: ${WORKSPACE}"
       }
@@ -28,7 +28,7 @@ pipeline {
       steps {
         dir("${WORKSPACE}/conduit-ui") {
           echo "Install conduit UI packages"
-          //sh "npm install"
+          sh "npm install"
         }
       }
     }
@@ -42,7 +42,7 @@ pipeline {
     stage('Build UI') {
       steps {
         dir("${WORKSPACE}/conduit-ui") {
-          //sh "npm run build"
+          sh "npm run build"
         }
       }
     }
