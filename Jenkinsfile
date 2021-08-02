@@ -16,6 +16,7 @@ pipeline {
         //sh "npm --version"
         //sh "ng --version"
         sh "ansible --version"
+        sh "whoami"
         echo "Workspace Folder: ${WORKSPACE}"
       }
     }
@@ -36,7 +37,6 @@ pipeline {
       steps {
         dir("${WORKSPACE}/conduit-ui") {
           echo "npm run lint"
-          sh "whoami"
         }
       }
     }
