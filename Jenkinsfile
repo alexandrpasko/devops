@@ -28,7 +28,7 @@ pipeline {
       steps {
         dir("${WORKSPACE}/conduit-ui") {
           echo "Install conduit UI packages"
-          sh "npm install"
+          //sh "npm install"
         }
       }
     }
@@ -42,7 +42,7 @@ pipeline {
     stage('Build UI') {
       steps {
         dir("${WORKSPACE}/conduit-ui") {
-          sh "npm run build"
+          //sh "npm run build"
         }
       }
     }
