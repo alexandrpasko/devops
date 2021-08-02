@@ -13,7 +13,7 @@ pipeline {
         echo "Audit all tools to be use on this pipeline ${BRANCH}"
         sh "git --version"
         //sh "node --version"
-        sh "npm --version"
+        //sh "npm --version"
         //sh "ng --version"
         sh "ansible --version"
         echo "Workspace Folder: ${WORKSPACE}"
@@ -36,6 +36,7 @@ pipeline {
       steps {
         dir("${WORKSPACE}/conduit-ui") {
           echo "npm run lint"
+          sh "whoami"
         }
       }
     }
