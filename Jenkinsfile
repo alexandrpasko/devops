@@ -5,7 +5,7 @@ pipeline {
     BRANCH = 'main'
     WWWROOT = '/var/www/html'
     SSHUSER = 'jenkins'
-    WORKSPACE = '/home/alexandr/devops'
+    //WORKSPACE = '/home/alexandr/devops'
   }
   stages {
     stage('Audit Tools') {
