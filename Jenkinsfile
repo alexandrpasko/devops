@@ -14,7 +14,7 @@ pipeline {
         sh "git --version"
         sh "node --version"
         sh "npm --version"
-        sh "ng --version"
+        //sh "ng --version"
         sh "ansible --version"
         echo "Workspace Folder: ${WORKSPACE}"
       }
